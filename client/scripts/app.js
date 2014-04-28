@@ -41,6 +41,27 @@ $.ajax({
   });
 };
 
-app.renderMessage(message){
+app.messages = {};
 
-}
+
+app.renderMessage = function(message){
+  var $msg = $(document.createElement("div"))
+    .addClass("message ")
+    .attr("username", message.username);
+
+  var $username = $(document.createElement("div")).text(message.username).addClass("username");
+  var $createAt = $(document.createElement("div")).text(message.createAt);
+  var $text = $(document.createElement("div")).text(message.text);
+  var $roomname = $(document.createElement("div")).text(message.roomname);
+
+  $msg.append($username).append($createAt).append($text).append($roomname);
+  $("body").append($msg).show();
+
+  return $msg;
+};
+
+app.testMessage = {
+  'username': 'shawndrost',
+  'text': 'trololo',
+  'roomname': '4chan'
+};
