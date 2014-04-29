@@ -19,11 +19,16 @@ app.send = function(message){
 };
 
 app.init = function(){
-
+  //default to lobby and populate the page.
+  //setInterval for update function
+  var self = this;
+  setInterval(function(){
+     self.fetch();
+  }, 1000);
 };
 
 app.fetch =  function(){
-  that = this;
+  var that = this;
 $.ajax({
     // always use this url
     url: 'https://api.parse.com/1/classes/chatterbox',
@@ -160,3 +165,5 @@ app.current = {};
 app.current.room = "4chan";
 app.current.user = "";
 app.current.users = [];
+
+app.init();
